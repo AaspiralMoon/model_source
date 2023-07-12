@@ -1,4 +1,3 @@
-https://drive.google.com/file/d/1ee7_kKtK-Q_meOQ0jzpm1LXwk2OnPvEj/view
 import cv2
 import numpy as np
 
@@ -20,9 +19,18 @@ while True:
     # Compute residual frame
     residual = cv2.absdiff(previous_frame, current_frame)
 
-    # Save or display the residual frame
+    # Display the current frame (original video)
+    cv2.imshow('Original Video', current_frame)
+
+    # Display the residual frame
     cv2.imshow('Residual Frame', residual)
-    cv2.waitKey(1)
+
+    # Wait for key press
+    key = cv2.waitKey(1) & 0xFF
+
+    # Break the loop on 'q' key press
+    if key == ord("q"):
+        break
 
     previous_frame = current_frame
 
